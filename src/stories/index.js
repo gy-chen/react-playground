@@ -9,6 +9,7 @@ import { Button, Welcome } from '@storybook/react/demo';
 import './sliderkit';
 import './morph';
 import './albus';
+import './reveal';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
