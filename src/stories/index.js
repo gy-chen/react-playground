@@ -11,6 +11,7 @@ import './morph';
 import './albus';
 import './reveal';
 import './markdownit';
+import './codemirror';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
