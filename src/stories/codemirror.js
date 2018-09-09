@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import CodeMirror from 'codemirror/lib/codemirror.js';
+import 'codemirror/mode/markdown/markdown.js';
 import 'codemirror/lib/codemirror.css';
 
 
@@ -17,6 +18,8 @@ class CM extends Component {
     const { ...options } = this.props;
 
     this._codemirror = CodeMirror.fromTextArea(this._ref, options);
+    this._codemirror.getDoc()
+      .setValue(`### CodeMirror\nDefault options\n${JSON.stringify(CodeMirror.defaults, undefined, 2)}`);
   }
 
   render() {
@@ -25,4 +28,5 @@ class CM extends Component {
 }
 
 storiesOf('CodeMirror', module)
-    .add('Basic', () => <CM />);
+    .add('Basic', () => <CM lineWrapping={true} />)
+    .add('Markdown mode', () => <CM lineWrapping={true} mode="markdown" />);
