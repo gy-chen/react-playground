@@ -13,12 +13,16 @@
   },
   "dependencies": {
     "codemirror": "^5.40.0",
+    "fluent": "^0.9.1",
+    "fluent-langneg": "^0.1.0",
+    "fluent-react": "^0.8.2",
     "markdown-it": "^8.4.2",
     "react": "^16.2.0",
     "react-albus": "^2.0.0",
     "react-dom": "^16.2.0",
     "react-morph": "^0.3.1",
     "react-reveal": "^1.2.1",
+    "react-router-dom": "^4.3.1",
     "react-slider-kit": "^1.0.0-beta-0",
     "styled-components": "^3.4.9"
   },

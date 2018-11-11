@@ -13,6 +13,7 @@ import './reveal';
 import './markdownit';
 import './codemirror';
 import './css';
+import './i18n';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
