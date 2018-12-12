@@ -1,0 +1,14 @@
+.leaflet {
+    flex: 1;
+}
+#app {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+}
+
+/*# sourceMappingURL=main.css.map*/
