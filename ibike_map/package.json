@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:client": "webpack-dev-server --config ./src/client/webpack.config.js --open",
-    "build:client": "webpack --config ./src/client/webpack.config.js"
+    "start:server": "node -r source-map-support/register ./dist/server/main.js",
+    "build:client": "webpack --config ./src/client/webpack.config.js",
+    "build:server": "webpack --config ./src/server/webpack.config.js",
+    "dev": "node src/script/devServer.js"
   },
   "author": "GYCHEN <gy.chen@gms.nutc.edu.tw>",
   "license": "ISC",
@@ -19,8 +22,10 @@
     "html-webpack-plugin": "^3.2.0",
     "leaflet": "^1.3.4",
     "mini-css-extract-plugin": "^0.5.0",
+    "nodemon": "^1.18.8",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "source-map-support": "^0.5.9",
     "ts-loader": "^5.3.1",
     "typescript": "^3.2.2",
     "url-loader": "^1.1.2",
