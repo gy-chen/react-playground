@@ -13,12 +13,7 @@ module.exports = {
     },
     module: {
         rules: [
-            { test: /\.tsx?/, loader: 'ts-loader' },
-            { test: /\.css$/, loader: 'css-loader' },
-            {
-                test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-                loader: require.resolve('url-loader')
-            },
+            { test: /\.tsx?/, loader: 'ts-loader' }
         ]
     }
 }
