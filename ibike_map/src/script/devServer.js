@@ -1,39 +1,60 @@
 const webpack = require('webpack');
 const nodemon = require('nodemon');
-const serverConfig = require('../server/webpack.config');
+const staticServerConfig = require('../staticServer/webpack.config');
+const ibikeServerConfig = require('../ibikeServer/webpack.config');
 const clientConfig = require('../client/webpack.config');
 
 
-let serverRunning = false;
-const startServer = () => {
-    serverRunning = true;
-    const server = 'dist/server/main.js';
-    nodemon({
-        script: server,
-        watch: server
-    });
+const createStartServer = scriptPath => {
+    let serverRunning = false;
+    return () => {
+        if (serverRunning) {
+            return;
+        }
+        serverRunning = true;
+        nodemon({
+            script: scriptPath,
+            watch: scriptPath
+        })
+    };
 };
 
-const serverWebpack = webpack(serverConfig);
+const startStaticServer = createStartServer('dist/staticServer/main.js');
+const staticServerWebpack = webpack(staticServerConfig);
 
-serverWebpack.hooks.compile.tap("serverCompilingMessage", () => {
-    console.log('server compiling...');
+staticServerWebpack.hooks.compile.tap("serverCompilingMessage", () => {
+    console.log('static server compiling...');
 });
 
-serverWebpack.watch({}, (_, stats) => {
+staticServerWebpack.watch({}, (_, stats) => {
     if (stats.hasErrors()) {
         console.log(stats);
         return;
     }
-    console.log('server compiled.');
-    if (!serverRunning) {
-        startServer();
+    console.log('ibike server compiled.');
+    startStaticServer();
+});
+
+
+const startIbikeServer = createStartServer('dist/ibikeServer/main.js');
+const ibikeServerWebpack = webpack(ibikeServerConfig);
+
+ibikeServerWebpack.hooks.compile.tap("serverCompilingMessage", () => {
+    console.log('ibike server compiling...');
+});
+
+ibikeServerWebpack.watch({}, (_, stats) => {
+    if (stats.hasErrors()) {
+        console.log(stats);
+        return;
     }
+    console.log('ibike server compiled.');
+    startIbikeServer();
 });
 
 const clientWebpack = webpack(clientConfig);
 
-clientWebpack.hooks.compile.tap("cleintCompilingMessage", () => {
+clientWebpack.hooks.compile.tap("clientCompilingMessage", () => {
     console.log('client compiling...');
 });
 

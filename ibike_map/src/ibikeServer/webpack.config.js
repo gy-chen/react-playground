@@ -1,10 +1,10 @@
 const path = require('path');
 
 module.exports = {
-    entry: './src/server/index.tsx',
+    entry: './src/ibikeServer/index.tsx',
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, '../..', 'dist/server')
+        path: path.resolve(__dirname, '../..', 'dist/ibikeServer')
     },
     target: 'node',
     node: {
@@ -12,7 +12,7 @@ module.exports = {
     },
     devtool: 'source-map',
     resolve: {
-        extensions: ['.ts', '.tsx', '.js']
+        extensions: ['.ts', '.tsx', '.js', '.json']
     },
     module: {
         rules: [
