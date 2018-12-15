@@ -20,6 +20,9 @@ mongoClient.connect(err => {
     const geolocationCollection = mongoClient.db('ibike_map').collection('geolocations');
     geolocationCollection.deleteMany({});
 
+    let insertCount = 0;
+    const bulk = [];
+
     stream.pipeline(
         fs.createReadStream(GEOLOCATION_CSV_PATH),
         parse({
@@ -45,7 +48,14 @@ mongoClient.connect(err => {
             lat,
             lng
         };
-        geolocationCollection.insertOne(document);
+        bulk.push(document);
+
+        insertCount += 1;
+        if (insertCount % 1000 === 0) {
+            geolocationCollection.insertMany(bulk);
+            bulk.length = 0;
+            console.log(`inserted ${insertCount} objects.`)
+        }
     }).on('end', () => {
         mongoClient.close();
     });
