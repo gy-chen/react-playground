@@ -3,7 +3,6 @@ import * as puppeteer from 'puppeteer';
 import * as path from 'path';
 
 const CLIENT_PATH = path.resolve(__dirname, '../client/dist/index.html');
-console.log(CLIENT_PATH)
 
 
 export const createApp = () => {
