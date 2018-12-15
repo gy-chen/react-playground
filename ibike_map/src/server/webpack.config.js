@@ -1,14 +1,14 @@
 const path = require('path');
 
 module.exports = {
-    entry: './src/ibikeServer/index.tsx',
+    entry: './src/server/index.tsx',
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, '../..', 'dist/ibikeServer')
+        path: path.resolve(__dirname, 'dist')
     },
     target: 'node',
     node: {
-        __dirname: false
+        __dirname: true
     },
     devtool: 'source-map',
     resolve: {

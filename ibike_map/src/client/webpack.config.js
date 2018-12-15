@@ -6,7 +6,7 @@ module.exports = {
     entry: "./src/client/index.tsx",
     output: {
         filename: "[name].js",
-        path: path.resolve(__dirname, "../..", "dist/client"),
+        path: path.resolve(__dirname, "dist"),
         chunkFilename: "[name].chunk.js"
     },
     devtool: "source-map",
