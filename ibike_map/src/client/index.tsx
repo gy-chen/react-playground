@@ -1,15 +1,15 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import App from './App';
-import LocationContext from './context/location';
+import QSLocationProvider from './context/QSLocationProvider';
 import './index.css';
 
 
 ReactDOM.render(
     (
-        <LocationContext.Provider value={[24.1469, 120.6839]}>
+        <QSLocationProvider>
             <App />
-        </LocationContext.Provider>
+        </QSLocationProvider>
     ),
     document.getElementById("app")
 );
