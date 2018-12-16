@@ -15,9 +15,30 @@ export const createApp = () => {
         const geolocation = findGeolocation(req.ip) || {};
         const qs = querystring.stringify(geolocation);
         await page.goto(`file://${CLIENT_PATH}?${qs}`);
-        const screenshot = await page.screenshot()
-        res.setHeader('Content-Type', 'image/png');
-        res.send(screenshot);
+        const screenshot = await page.screenshot({
+            encoding: 'base64'
+        });
+        res.send(`
+        <!doctype html>
+        <html>
+        <head>
+            <style>
+            body {
+                width: 100%;
+                height: 100vh;
+                margin: 0;
+            }
+
+            img {
+                width: 100%;
+            }
+            </style>
+        </head>
+        <body>
+            <img src="data:image/png;base64,${screenshot}" />
+        </body>
+        </html>
+        `)
     });
 
     return app;
