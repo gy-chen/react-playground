@@ -1,4 +1,6 @@
 const path = require('path');
+const webpack = require('webpack');
+const env = require('./env');
 
 module.exports = {
     entry: './src/server/index.tsx',
@@ -18,5 +20,8 @@ module.exports = {
         rules: [
             { test: /\.tsx?/, loader: 'ts-loader' }
         ]
-    }
+    },
+    plugins: [
+        new webpack.DefinePlugin(env)
+    ]
 }

@@ -1,6 +1,5 @@
 import * as mongodb from 'mongodb';
 
-// TODO load mongodb url from env
 const client = new mongodb.MongoClient('mongodb://localhost:27017', {
     useNewUrlParser: true
 });
