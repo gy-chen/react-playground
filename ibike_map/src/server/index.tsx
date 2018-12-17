@@ -8,9 +8,13 @@ const CLIENT_PATH = path.resolve(__dirname, '../client/dist/index.html');
 
 export const createApp = () => {
     const app = express();
+    app.set('trust proxy', true);
 
     app.get('/', async (req, res) => {
-        const browser = await puppeteer.launch();
+        const browser = await puppeteer.launch({
+            executablePath: '/usr/bin/chromium-browser',
+            args: ['--no-sandbox']
+        });
         const page = await browser.newPage();
         const geolocation = findGeolocation(req.ip) || {};
         const qs = querystring.stringify(geolocation);
