@@ -16,7 +16,7 @@ export const createApp = () => {
             args: ['--no-sandbox']
         });
         const page = await browser.newPage();
-        const geolocation = findGeolocation(req.ip) || {};
+        const geolocation = (await findGeolocation(req.ip)) || {};
         const qs = querystring.stringify(geolocation);
         await page.goto(`file://${CLIENT_PATH}?${qs}`, {
             waitUntil: 'networkidle0'
