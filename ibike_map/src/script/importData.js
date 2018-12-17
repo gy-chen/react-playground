@@ -4,10 +4,15 @@ const stream = require('stream');
 const parse = require('csv-parse')
 const { cidr } = require('node-cidr');
 const mongodb = require('mongodb');
+const dotenv = require('dotenv');
+
+dotenv.config({
+    path: path.resolve(__dirname, '../server/.env')
+});
+
 
 const GEOLOCATION_CSV_PATH = path.join(__dirname, '../data/geolocation.csv');
-// TODO load mongodb url from env
-const mongoClient = new mongodb.MongoClient('mongodb://localhost:27017', {
+const mongoClient = new mongodb.MongoClient(process.env.REACT_APP_MONGO_URL, {
     useNewUrlParser: true
 });
 
