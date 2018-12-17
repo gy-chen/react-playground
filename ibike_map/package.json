@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:client": "webpack-dev-server --config ./src/client/webpack.config.js --open",
-    "start:server": "node -r source-map-support/register ./dist/server/main.js",
+    "start:server": "node -r source-map-support/register ./src/server/dist/main.js",
     "build:client": "webpack --config ./src/client/webpack.config.js",
     "build:server": "webpack --config ./src/server/webpack.config.js",
     "dev": "node src/script/devServer.js",
