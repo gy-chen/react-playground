@@ -43,6 +43,7 @@ export const createApp = () => {
         </body>
         </html>
         `)
+        await browser.close();
     });
 
     return app;
