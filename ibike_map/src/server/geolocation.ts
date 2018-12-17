@@ -1,6 +1,6 @@
 import * as mongodb from 'mongodb';
 
-const client = new mongodb.MongoClient('mongodb://localhost:27017', {
+const client = new mongodb.MongoClient(process.env.REACT_APP_MONGO_URL, {
     useNewUrlParser: true
 });
 
